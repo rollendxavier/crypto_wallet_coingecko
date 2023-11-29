@@ -29,6 +29,7 @@ python app.py
 
 - `GET /new_account`: Creates a new Ethereum account and returns the private key and address.
 - `GET /balance/<contract_address>`: Returns the balance of the ERC20 token for the Ethereum address stored in the session.
+- `POST /send_transaction`: Send Ether to other Ethereum addresses
 - `GET /market_chart/<contract_address>/<days>`: Returns the market chart data for the given ERC20 contract in USD for the specified number of days.
 
 ## Files
@@ -36,8 +37,7 @@ python app.py
 - `app.py`: The main Python script that runs the application.
 - `erc20_abi.json`: The ABI for the ERC20 token standard.
 - `templates/index.html`: The HTML template for the application's user interface.
-- 
 ## Output
-![image](https://github.com/rollendxavier/crypto_wallet_coingecko/assets/42246854/805c9e40-a948-4cde-948d-1c67343e7faa)
+![image](https://github.com/rollendxavier/crypto_wallet_coingecko/assets/42246854/354d85de-58db-4586-b639-48def0871c70)
 
 For more details, please refer to the article published in the [article link].
