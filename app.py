@@ -14,7 +14,7 @@ app.config['SECRET_KEY'] = 'your-secret-key'  # replace with your secret key
 def new_account():
     account = web3.eth.account.create('YOUR_PASSWORD')
     session['account'] = {
-        'privateKey': account.key.hex(),
+        'privateKey': web3.to_hex(account.key),
         'address': account.address
     }
     return jsonify(session['account'])
@@ -35,17 +35,17 @@ def get_balance(contract_address):
 @app.route('/send_transaction', methods=['POST'])
 def send_transaction():
     data = request.get_json()
-    nonce = web3.eth.getTransactionCount(session['account']['address'])
+    nonce = web3.eth.get_transaction_count(session['account']['address'])
     txn_dict = {
             'to': data['to'],
-            'value': web3.toWei(data['amount'], 'ether'),
+            'value': web3.to_wei(data['amount'], 'ether'),
             'gas': 2000000,
-            'gasPrice': web3.toWei('40', 'gwei'),
+            'gasPrice': web3.to_wei('40', 'gwei'),
             'nonce': nonce,
             'chainId': 3
     }
-    signed_txn = web3.eth.account.signTransaction(txn_dict, session['account']['privateKey'])
-    txn_hash = web3.eth.sendRawTransaction(signed_txn.rawTransaction)
+    signed_txn = web3.eth.account.sign_transaction(txn_dict, session['account']['privateKey'])
+    txn_hash = web3.eth.send_raw_transaction(signed_txn.rawTransaction)
     return jsonify({'transaction_hash': txn_hash.hex()})
 
 @app.route('/market_chart/<contract_address>/<days>', methods=['GET'])
