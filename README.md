@@ -40,4 +40,4 @@ python app.py
 ## Output
 ![image](https://github.com/rollendxavier/crypto_wallet_coingecko/assets/42246854/354d85de-58db-4586-b639-48def0871c70)
 
-For more details, please refer to the article published in the [article link].
+For more details, please refer to the article published in the [coingecko](https://www.coingecko.com/learn/build-crypto-wallet-python).
